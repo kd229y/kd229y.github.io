@@ -6,3 +6,4 @@ document.addEventListener("DOMContentLoaded", () => {
         alert("About section clicked!");
     });
 });
+
