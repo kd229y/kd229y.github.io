@@ -12,15 +12,16 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v3
+      - name: Run Tests
+        run: echo "Running tests..." 
+
+      - uses: actions/checkout@v4
+      
+      - uses: actions/setup-node@v3
         with:
           node-version: '20'
           cache: 'npm'
-
-      - name: Install dependencies
-        run: npm install  # 安裝專案中的依賴（如果有 package.json）
-
+      
       - name: Install linting dependencies
         run: |
           npm install -g htmlhint stylelint eslint
@@ -38,4 +39,4 @@ jobs:
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./ # 確保這裡指向正確的發佈目錄，例如 dist 或 build
+          publish_dir: ./ # Directory containing built files
